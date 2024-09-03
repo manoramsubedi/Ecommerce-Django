@@ -70,12 +70,12 @@
                     <dd class="text-right">Rs {{ total }}</dd>
                     </dl>
                     <dl class="dlist-align">
-                    <dt>Tax:</dt>
-                    <dd class="text-right"> Rs 10.00</dd>
+                    <dt>Tax ({{ tax_percent }}%):</dt>
+                    <dd class="text-right"> Rs {{ tax }}</dd>
                     </dl>
                     <dl class="dlist-align">
                     <dt>Total:</dt>
-                    <dd class="text-right text-dark b"><strong>Rs Price after tax</strong></dd>
+                    <dd class="text-right text-dark b"><strong>Rs {{ grand_total }}</strong></dd>
                     </dl>
                     <hr>
                     <p class="text-center mb-3">

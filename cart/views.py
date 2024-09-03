@@ -41,6 +41,7 @@ def cart(request):
     try:
         total = 0
         quantity = 0
+        tax_percent = 2
         cart_items = []
 
         cart = Cart.objects.get(cart_id=_cart_id(request)) # Retrives the cart
@@ -48,6 +49,9 @@ def cart(request):
         for cart_item in cart_items: # Iterates over each item in cart
             total += cart_item.total # First item total = total, then adds the total with second item total
             quantity += cart_item.quantity
+
+        tax = (tax_percent * total)/100
+        grand_total = total + tax
     except ObjectDoesNotExist:
         pass
 
@@ -55,5 +59,8 @@ def cart(request):
         'total': total,
         'quantity': quantity,
         'cart_items': cart_items,
+        'tax': tax,
+        'tax_percent': tax_percent,
+        'grand_total': grand_total,
     }
     return render(request, "store/cart.html", context)
