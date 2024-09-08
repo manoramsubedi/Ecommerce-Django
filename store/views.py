@@ -27,7 +27,7 @@ def store(request, slug=None):
 
     # if there's no slug passed
     else:
-        products = Product.objects.all().filter(is_availiable=True)
+        products = Product.objects.all().filter(is_availiable=True).order_by('id')
         paginator = Paginator(products, 3)
         page = request.GET.get('page')
         page_products = paginator.get_page(page)
